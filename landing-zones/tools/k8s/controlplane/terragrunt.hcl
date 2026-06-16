@@ -8,9 +8,24 @@ include "root" {
 }
 
 terraform {
-  source = "github.com/hoverkraft-tech/terraform-modules.git//k8s/helm-template?ref=2.1.4"
+  source = "/Users/frederic/Documents/_work/119_hoverkraft-tech/src/terraform-modules//k8s/helm-template"
+  // source = "github.com/hoverkraft-tech/terraform-modules.git//k8s/helm-template?ref=2.1.4"
 }
 
 inputs = {
-  name = local.env.name
+  name = "vcluster"
+  namespace = "${local.global.customer.slug}-${local.env.name}"
+  repository = "https://charts.loft.sh"
+  chart = "vcluster"
+  chart_version = local.env.vcluster.version
+
+  values = [
+    templatefile("values.yaml", {
+      ctx_name      = local.env.name,
+      lb_ip         = local.env.vcluster.loadBalancerIp,
+      storage_class = local.env.vcluster.storageClass,
+      sts_req_mem   = local.env.vcluster.sts.memory.request,
+      sts_lim_mem   = local.env.vcluster.sts.memory.limit,
+    })
+  ]
 }

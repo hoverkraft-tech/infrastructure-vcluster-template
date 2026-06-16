@@ -1,11 +1,7 @@
 customer:
   name: acme.net
   domain: acme.net
+  slug: acme-net
 
 project:
   name: acme
-
-# tfstates:
-#   bucket: hk-terraform-states
-#   endpoint: s3.gra.io.cloud.ovh.net
-#   region: gra

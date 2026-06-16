@@ -1,0 +1,49 @@
+controlPlane:
+  coredns:
+    deployment:
+      resources:
+        requests:
+          cpu: 50m
+          memory: 60Mi
+          ephemeral-storage: 100Mi
+        limits: ~
+  distro:
+    k8s:
+      resources:
+        requests: ~
+        limits: ~
+  statefulSet:
+    resources:
+        requests:
+          cpu: 256m
+          memory: "${sts_req_mem}"
+          ephemeral-storage: 500Mi
+        limits:
+          cpu: 256m
+          memory: "${sts_lim_mem}"
+    persistence:
+      volumeClaim:
+        storageClass: "${storage_class}"
+        size: 100Mi
+
+  service:
+    spec:
+      type: LoadBalancer
+      loadBalancerIP: "${lb_ip}"
+      ports:
+        - appProtocol: HTTPS
+          name: https
+          port: 443
+          targetPort: 8443
+          protocol: TCP
+
+exportKubeConfig:
+  context: "${ctx_name}"
+  server: "https://${lb_ip}:443"
+  secret:
+    name: vc-kubeconfig
+
+sync:
+  toHost:
+    ingresses:
+      enabled: true

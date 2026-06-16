@@ -1,0 +1,8 @@
+[providers.pass]
+type = "password-store"
+
+[secrets]
+OP_SERVICE_ACCOUNT_TOKEN = { provider = "pass-local", value = "fnox/OP_SERVICE_ACCOUNT_TOKEN" }
+INFRACOST_API_KEY = { description = "Infracost API key", provider = "pass-local", value = "infracost/api-key" }
+TFSTATES_ACCESS_KEY_ID = { default = "fake" }
+TFSTATES_SECRET_ACCESS_KEY = { default = "fake" }

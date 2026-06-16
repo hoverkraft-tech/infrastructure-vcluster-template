@@ -1,0 +1,10 @@
+# created by devcontainer post-start
+# DO NOT EDIT !
+
+HOST *
+  ServerAliveInterval 150
+  ForwardAgent yes
+
+# Host gitlab.acme.net
+#   Port 999
+#   ServerAliveInterval 150

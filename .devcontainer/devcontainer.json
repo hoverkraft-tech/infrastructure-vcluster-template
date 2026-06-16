@@ -1,0 +1,34 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/debian
+{
+  "name": "Debian",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "image": "mcr.microsoft.com/devcontainers/base:trixie",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "installTools": true,
+      "version": "os-provided"
+    },
+    "ghcr.io/hoverkraft-tech/devcontainers/asdf:1": {},
+    "ghcr.io/christophermacgown/devcontainer-features/direnv:1": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "moby": false
+    },
+    "ghcr.io/devcontainer-community/devcontainer-features/chezmoi.io:1": {}
+  },
+  "postStartCommand": ["bash", ".devcontainer/scripts/post-start.sh"],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "hashicorp.terraform",
+        "bahramjoharshamshiri.hcl-lsp",
+        "hashicorp.hcl",
+        "EditorConfig.EditorConfig",
+        "DavidAnson.vscode-markdownlint",
+        "yzhang.markdown-all-in-one",
+        "christian-kohler.path-intellisense",
+        "bierner.markdown-mermaid"
+      ]
+    }
+  }
+}

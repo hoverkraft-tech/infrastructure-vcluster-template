@@ -1,0 +1,21 @@
+# infracost
+.infracost
+
+# terraform
+.terraform
+*.tfstate
+*.tfstate.backup
+
+# terragrunt
+.terragrunt-cache
+
+# mise
+fnox.local.toml
+mise.local.toml
+
+# misc
+.history
+.DS_Store
+
+# editors
+/.vscode

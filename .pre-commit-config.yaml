@@ -1,0 +1,90 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-merge-conflict
+      - id: end-of-file-fixer
+        exclude: ^.*/\.infracost/terraform_modules/manifest\.json$
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-json
+        exclude: ^(\.devcontainer/.*|\.vscode/.*)$
+      - id: check-executables-have-shebangs
+      - id: check-symlinks
+      - id: check-yaml
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.100.0
+    hooks:
+      # NOTE: this is very slow you might want to run it on-demand only
+      - id: terraform_providers_lock
+        stages: [manual]
+        args:
+          - --hook-config=--mode=only-check-is-current-lockfile-cross-platform
+          - --args=-platform=darwin_amd64
+          - --args=-platform=darwin_arm64
+          - --args=-platform=linux_amd64
+        exclude: |
+          (?x)
+            (^modules/
+          )
+      - id: tfupdate
+        name: Autoupdate Terraform versions (terraform)
+        args:
+          - --args=terraform
+          - --args=--version '~> 1.3'
+        files: '\.terraform\.lock\.hcl$'
+      - id: tfupdate
+        name: Autoupdate Terraform versions (random provider)
+        args:
+          - --args=provider hashicorp/random
+          - --args=--version '>= 3.4.0, <4.0.0'
+      - id: tfupdate
+        name: Autoupdate Terraform versions (time provider)
+        args:
+          - --args=provider hashicorp/time
+          - --args=--version '>= 0.13.1, <1.0.0'
+      # - id: tfupdate
+      #   name: Autoupdate Terraform versions (azapi provider)
+      #   args:
+      #     - --args=provider azapi
+      #     - --args=--version '>= 2.6.0, <3.0.0'
+      #   files: '\.terraform\.lock\.hcl$'
+      - id: terraform_validate
+        args:
+          - --hook-config=--retry-once-with-cleanup=true
+          - --hook-config=--parallelism-limit=1
+          - --env-vars=TF_CLI_CONFIG_FILE=""
+          - --env-vars=TF_PLUGIN_CACHE_DIR=""
+        files: ^modules/.*
+      - id: terraform_fmt
+      - id: terraform_docs
+        args:
+          - "--args=--lockfile=false"
+          - --hook-config=--path-to-file=README.md
+          - --hook-config=--add-to-existing-file=true
+          - --hook-config=--create-file-if-not-exist=true
+      - id: terraform_tflint
+        args:
+          - "--args=--call-module-type=all"
+        files: ^modules/.*
+      - id: terraform_trivy
+        args:
+          - --args="--skip-dirs='**/.terragrunt-cache'"
+      - id: terraform_checkov
+        args:
+          - --args=--config-file __GIT_WORKING_DIR__/.checkov.yaml
+      - id: infracost_breakdown
+        args:
+          - --args="--path=landing-zones"
+          - --hook-config='.totalMonthlyCost | tonumber < 900'
+          - --hook-config='.currency == "USD"'
+        verbose: true # Always show costs
+
+  - repo: https://github.com/gruntwork-io/pre-commit
+    rev: v0.1.30
+    hooks:
+      - id: terragrunt-hclfmt
+        exclude: '^.*/.terragrunt-cache'

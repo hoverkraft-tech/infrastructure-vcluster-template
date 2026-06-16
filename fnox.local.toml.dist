@@ -1,0 +1,5 @@
+default_provider = "pass-local"
+
+[providers.pass-local]
+type = "password-store"
+store_dir = "/Users/john/.password-store"

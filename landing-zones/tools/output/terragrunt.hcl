@@ -8,8 +8,7 @@ include "root" {
 }
 
 terraform {
-  source = "/Users/frederic/Documents/_work/119_hoverkraft-tech/src/terraform-modules//outputs/local-file"
-  // source = "github.com/hoverkraft-tech/terraform-modules.git//k8s/helm-template?ref=2.1.4"
+  source = "github.com/hoverkraft-tech/terraform-modules.git//outputs/local-file?ref=2.5.0"
 }
 
 dependency "helm" {
@@ -22,6 +21,6 @@ dependency "helm" {
 
 inputs = {
   name = "vcluster manifest"
-  filename = "${ get_env("SECRETS") }/${local.env.name}.yaml"
+  filename = "${local.global.shared_folder.path}/${local.env.name}.yaml"
   content = dependency.helm.outputs.manifest
 }

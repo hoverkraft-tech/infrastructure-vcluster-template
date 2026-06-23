@@ -4,4 +4,7 @@ customer:
   slug: acme-net
 
 project:
-  name: acme
+  name: hoverkraft
+
+shared_folder:
+   path: /shared

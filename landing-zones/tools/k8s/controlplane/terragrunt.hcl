@@ -8,8 +8,7 @@ include "root" {
 }
 
 terraform {
-  source = "/Users/frederic/Documents/_work/119_hoverkraft-tech/src/terraform-modules//k8s/helm-template"
-  // source = "github.com/hoverkraft-tech/terraform-modules.git//k8s/helm-template?ref=2.1.4"
+  source = "github.com/hoverkraft-tech/terraform-modules.git//k8s/helm-template?ref=2.5.0"
 }
 
 inputs = {

@@ -6,5 +6,8 @@ customer:
 project:
   name: hoverkraft
 
-shared_folder:
-   path: /shared
+sharedFolder:
+  generatedManifests:
+    basePath: /shared/inputs/manifests
+  kubeconfigFiles:
+     basePath: /shared/outputs/kubeconfigs

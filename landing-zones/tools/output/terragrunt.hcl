@@ -21,6 +21,6 @@ dependency "helm" {
 
 inputs = {
   name = "vcluster manifest"
-  filename = "${local.global.shared_folder.path}/${local.env.name}.yaml"
+  filename = "${local.global.sharedFolder.generatedManifests.basePath}/${local.global.customer.name}/${local.env.name}.yaml"
   content = dependency.helm.outputs.manifest
 }

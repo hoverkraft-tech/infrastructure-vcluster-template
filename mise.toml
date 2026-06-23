@@ -19,7 +19,7 @@ trivy = "0.49.1"
 [env]
 _.fnox-env = { tools = true }
 ROOT_DIR = { value = "{{ config_root }}", path = true }
-PASSWORD_STORE_DIR = { value = "{{ config_root }}/../../password-store", path = true }
+PASSWORD_STORE_DIR = { value = "{{ config_root }}/../password-store", path = true }
 SECRETS = { value = "{{ config_root }}/.secrets", path = true }
 TF_CLI_CONFIG_FILE = { value = "{{ config_root }}/.terraformrc", path = true }
 TF_LOG = ""

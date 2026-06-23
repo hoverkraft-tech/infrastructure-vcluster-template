@@ -12,5 +12,5 @@ terraform {
 }
 
 inputs = {
-  path = local.env.password_store.argocd_admin_password_path
+  path = local.env.password_store.argocd_ssh_private_key_path
 }

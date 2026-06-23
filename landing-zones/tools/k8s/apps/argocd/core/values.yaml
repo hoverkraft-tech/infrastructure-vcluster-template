@@ -1,0 +1,25 @@
+fullnameOverride: argocd
+
+configs:
+  params:
+    server.insecure: true
+
+dex:
+  enabled: false
+
+notifications:
+  enabled: true
+
+redis:
+
+  serviceAccount:
+    # SA créé par install.yaml avec le RBAC approprié (create secrets).
+    # La valeur par défaut du chart (create: false, name: "") résout
+    # serviceAccountName à "default" via le helper Helm, ce qui provoque
+    # l'erreur RBAC dans l'init container secret-init.
+    name: argocd-redis
+
+redisSecretInit:
+  serviceAccount:
+    # Réutilise le même SA qui possède les droits RBAC nécessaires
+    name: argocd-redis

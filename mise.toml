@@ -28,6 +28,7 @@ TG_PROVIDER_CACHE_DIR = "{{ config_root }}/.terragrunt-cache/terragrunt/provider
 TG_NO_AUTO_INIT = 0
 TG_NON_INTERACTIVE = 0
 TG_QUEUE_EXCLUDE_EXTERNAL = 1
+KUBECONFIG="{{ env.SECRETS }}/tools.kubeconfig:{{ env.SECRETS }}/dev.kubeconfig:{{ env.SECRETS }}/prod.kubeconfig"
 
 [tool_alias]
 checkov = "pipx:checkov"

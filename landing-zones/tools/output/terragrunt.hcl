@@ -15,12 +15,12 @@ dependency "helm" {
   config_path                             = "../k8s/controlplane"
   mock_outputs_allowed_terraform_commands = ["init", "validate", "plan"]
   mock_outputs = {
-    manifest   = "xxxxxxxxxxxxxxxxxxxx"
+    manifest = "xxxxxxxxxxxxxxxxxxxx"
   }
 }
 
 inputs = {
-  name = "vcluster manifest"
+  name     = "vcluster manifest"
   filename = "${local.global.sharedFolder.generatedManifests.basePath}/${local.global.customer.name}/${local.env.name}.yaml"
-  content = dependency.helm.outputs.manifest
+  content  = dependency.helm.outputs.manifest
 }

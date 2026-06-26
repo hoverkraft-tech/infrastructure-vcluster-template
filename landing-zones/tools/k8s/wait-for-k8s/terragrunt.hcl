@@ -1,6 +1,6 @@
 locals {
-  global = yamldecode(file(find_in_parent_folders("global.yaml")))
-  env    = yamldecode(file(find_in_parent_folders("env.yaml")))
+  global            = yamldecode(file(find_in_parent_folders("global.yaml")))
+  env               = yamldecode(file(find_in_parent_folders("env.yaml")))
   remote_kubeconfig = "${local.global.sharedFolder.kubeconfigFiles.basePath}/${local.global.customer.name}/${local.env.name}.kubeconfig"
   local_kubeconfig  = "${get_repo_root()}/.secrets/${local.env.name}.kubeconfig"
 }
@@ -13,7 +13,7 @@ terraform {
   # Wait for the kubeconfig file to be available before creating the namespace
   before_hook "wait_for_kubeconfig" {
     commands = ["apply"]
-    execute    = [
+    execute = [
       "bash",
       "${get_repo_root()}/scripts/wait-for-file.sh",
       "${local.remote_kubeconfig}"
@@ -22,7 +22,7 @@ terraform {
 
   before_hook "copy_file" {
     commands = ["apply"]
-    execute    = [
+    execute = [
       "cp",
       "${local.remote_kubeconfig}",
       "${local.local_kubeconfig}"
@@ -32,7 +32,7 @@ terraform {
 
 # vcluster manifest must be available before creating the namespace
 dependency "vcluster" {
-  config_path         = "../../output"
+  config_path  = "../../output"
   skip_outputs = true
 
   mock_outputs_allowed_terraform_commands = ["init", "validate", "plan"]

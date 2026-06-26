@@ -1,6 +1,6 @@
 locals {
-  global      = yamldecode(file(find_in_parent_folders("global.yaml")))
-  env         = yamldecode(file(find_in_parent_folders("env.yaml")))
+  global = yamldecode(file(find_in_parent_folders("global.yaml")))
+  env    = yamldecode(file(find_in_parent_folders("env.yaml")))
 }
 
 include "root" {
@@ -13,7 +13,7 @@ terraform {
 
 # vcluster manifest must have been applied before creating the namespace
 dependency "vcluster" {
-  config_path         = "../../../output"
+  config_path  = "../../../output"
   skip_outputs = true
 
   mock_outputs_allowed_terraform_commands = ["init", "validate", "plan"]
@@ -22,7 +22,7 @@ dependency "vcluster" {
 
 # we must have retrived the real kubeconfig before creating the namespace
 dependency "kubeconfig" {
-  config_path         = "../../wait-for-k8s"
+  config_path  = "../../wait-for-k8s"
   skip_outputs = true
 
   mock_outputs_allowed_terraform_commands = ["init", "validate", "plan"]
@@ -30,5 +30,5 @@ dependency "kubeconfig" {
 }
 
 inputs = {
-  name        = "argocd"
+  name = "argocd"
 }

@@ -12,10 +12,10 @@ terraform {
 }
 
 inputs = {
-  name = "vcluster"
-  namespace = "${local.global.customer.slug}-${local.env.name}"
-  repository = "https://charts.loft.sh"
-  chart = "vcluster"
+  name          = "vcluster"
+  namespace     = "${local.global.customer.slug}-${local.env.name}"
+  repository    = "https://charts.loft.sh"
+  chart         = "vcluster"
   chart_version = local.env.vcluster.version
 
   values = [

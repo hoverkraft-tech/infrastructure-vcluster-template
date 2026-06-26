@@ -1,7 +1,7 @@
 locals {
   global = yamldecode(file(find_in_parent_folders("global.yaml")))
   env    = yamldecode(file(find_in_parent_folders("env.yaml")))
-  remote_kubeconfig = "${local.global.sharedFolder.kubeconfigFiles.basePath}/${local.global.customer.name}/${local.env.name}.kubeconfig}"
+  remote_kubeconfig = "${local.global.sharedFolder.kubeconfigFiles.basePath}/${local.global.customer.name}/${local.env.name}.kubeconfig"
   local_kubeconfig  = "${get_repo_root()}/.secrets/${local.env.name}.kubeconfig"
 }
 
@@ -12,16 +12,16 @@ include "root" {
 terraform {
   # Wait for the kubeconfig file to be available before creating the namespace
   before_hook "wait_for_kubeconfig" {
-    commands = ["plan", "apply"]
+    commands = ["apply"]
     execute    = [
       "bash",
-      "./scripts/wait-for-file.sh",
+      "${get_repo_root()}/scripts/wait-for-file.sh",
       "${local.remote_kubeconfig}"
     ]
   }
 
   before_hook "copy_file" {
-    commands = ["plan", "apply"]
+    commands = ["apply"]
     execute    = [
       "cp",
       "${local.remote_kubeconfig}",

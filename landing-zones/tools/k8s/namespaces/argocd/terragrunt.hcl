@@ -1,7 +1,6 @@
 locals {
   global      = yamldecode(file(find_in_parent_folders("global.yaml")))
   env         = yamldecode(file(find_in_parent_folders("env.yaml")))
-  kubeconfig  = "${get_repo_root()}/.secrets/${local.env.name}.kubeconfig"
 }
 
 include "root" {
@@ -32,5 +31,4 @@ dependency "kubeconfig" {
 
 inputs = {
   name        = "argocd"
-  kubeconfig  = local.kubeconfig
 }

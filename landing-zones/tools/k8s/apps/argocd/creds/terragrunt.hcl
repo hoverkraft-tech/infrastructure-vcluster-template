@@ -41,8 +41,8 @@ inputs = {
     "argocd.argoproj.io/secret-type" = "repository"
   }
   data = {
-    "type" : local.env.helm.argocd-app.source-of-truth.type,
-    "url" : local.env.helm.argocd-app.source-of-truth.url,
+    "type" : local.env.helm.argocd-apps.source-of-truth.type,
+    "url" : local.env.helm.argocd-apps.source-of-truth.url,
     "sshPrivateKey" : dependency.argocd_private_key.outputs.full,
   }
 }

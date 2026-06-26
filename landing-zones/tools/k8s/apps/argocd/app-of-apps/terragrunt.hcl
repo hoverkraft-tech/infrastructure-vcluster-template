@@ -24,14 +24,14 @@ dependency "argocd" {
 inputs = {
   name             = "argocd-apps"
   chart            = "argocd-apps"
-  repository       = local.env.helm.argocd-app.repository
-  chart_version    = local.env.helm.argocd-app.chart_version
+  repository       = local.env.helm.argocd-apps.repository
+  chart_version    = local.env.helm.argocd-apps.chart_version
   customer         = local.global.customer.name
   environment      = local.env.name
   namespace        = local.env.helm.argocd.namespace
   kubeconfig_paths = [local.kubeconfig]
   values = [templatefile(
     "${get_terragrunt_dir()}/values.tpl.yaml",
-    { repo_url = local.env.helm.argocd-app.source-of-truth.url }
+    { repo_url = local.env.helm.argocd-apps.source-of-truth.url }
   )]
 }

@@ -1,2 +1,6 @@
 [tools]
 kubectl = "1.35"
+
+[env]
+KUBECONFIG = "{{ env.ROOT_DIR }}/.secrets/tools.kubeconfig"
+KUBE_CONFIG_PATH = "{{ env.ROOT_DIR }}/.secrets/tools.kubeconfig"

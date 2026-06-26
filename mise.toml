@@ -5,7 +5,7 @@ lockfile = true
 fnox-env = "https://github.com/jdx/mise-env-fnox"
 
 [tools]
-"pipx:checkov" = "3.3.1"
+checkov = "3.3.2"
 fnox = "1.19.0"
 infracost = "0.10.42"
 terraform = "1.13.1"
@@ -14,7 +14,7 @@ terraform-ls = "0.38.2"
 terragrunt = "0.86.2"
 tflint = "0.58.1"
 tfupdate = "0.8.5"
-trivy = "0.49.1"
+trivy = "0.71.2"
 
 [env]
 _.fnox-env = { tools = true }
@@ -28,3 +28,7 @@ TG_PROVIDER_CACHE_DIR = "{{ config_root }}/.terragrunt-cache/terragrunt/provider
 TG_NO_AUTO_INIT = 0
 TG_NON_INTERACTIVE = 0
 TG_QUEUE_EXCLUDE_EXTERNAL = 1
+
+[tool_alias]
+checkov = "pipx:checkov"
+trivy = "aqua:trivy"

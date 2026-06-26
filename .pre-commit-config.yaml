@@ -26,10 +26,6 @@ repos:
           - --args=-platform=darwin_amd64
           - --args=-platform=darwin_arm64
           - --args=-platform=linux_amd64
-        exclude: |
-          (?x)
-            (^modules/
-          )
       - id: tfupdate
         name: Autoupdate Terraform versions (terraform)
         args:
@@ -46,12 +42,6 @@ repos:
         args:
           - --args=provider hashicorp/time
           - --args=--version '>= 0.13.1, <1.0.0'
-      # - id: tfupdate
-      #   name: Autoupdate Terraform versions (azapi provider)
-      #   args:
-      #     - --args=provider azapi
-      #     - --args=--version '>= 2.6.0, <3.0.0'
-      #   files: '\.terraform\.lock\.hcl$'
       - id: terraform_validate
         args:
           - --hook-config=--retry-once-with-cleanup=true

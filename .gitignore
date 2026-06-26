@@ -16,6 +16,3 @@ mise.local.toml
 # misc
 .history
 .DS_Store
-
-# editors
-/.vscode

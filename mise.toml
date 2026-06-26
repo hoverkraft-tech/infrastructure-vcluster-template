@@ -1,12 +1,12 @@
 [settings]
 lockfile = true
 
-[plugins]
-fnox-env = "https://github.com/jdx/mise-env-fnox"
+# [plugins]
+# fnox-env = "https://github.com/jdx/mise-env-fnox"
 
 [tools]
+# fnox = "1.19.0"
 checkov = "3.3.2"
-fnox = "1.19.0"
 infracost = "0.10.42"
 terraform = "1.13.1"
 terraform-docs = "0.16.0"
@@ -17,7 +17,7 @@ tfupdate = "0.8.5"
 trivy = "0.71.2"
 
 [env]
-_.fnox-env = { tools = true }
+# _.fnox-env = { tools = true }
 ROOT_DIR = { value = "{{ config_root }}", path = true }
 PASSWORD_STORE_DIR = { value = "{{ config_root }}/../password-store", path = true }
 SECRETS = { value = "{{ config_root }}/.secrets", path = true }

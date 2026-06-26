@@ -1,0 +1,25 @@
+{
+  "recommendations": [
+    "bahramjoharshamshiri.hcl-lsp",
+    "be5invis.toml",
+    "bierner.markdown-mermaid",
+    "bierner.markdown-preview-github-styles",
+    "christian-kohler.path-intellisense",
+    "cliffordfajardo.highlight-line-vscode",
+    "DavidAnson.vscode-markdownlint",
+    "docker.docker",
+    "eamodio.gitlens",
+    "EditorConfig.EditorConfig",
+    "eriklynd.json-tools",
+    "esbenp.prettier-vscode",
+    "hashicorp.hcl",
+    "hashicorp.terraform",
+    "hverlin.mise-vscode",
+    "ms-azuretools.vscode-containers",
+    "ms-vscode-remote.remote-containers",
+    "oderwat.indent-rainbow",
+    "redhat.vscode-commons",
+    "tombi-toml.tombi",
+    "yzhang.markdown-all-in-one"
+  ]
+}

@@ -16,7 +16,7 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.100.0
+    rev: v1.108.0
     hooks:
       # NOTE: this is very slow you might want to run it on-demand only
       - id: terraform_providers_lock

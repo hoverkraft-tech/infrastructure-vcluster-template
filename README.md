@@ -1,43 +1,34 @@
 # infrastructure
 
-Infrastructure as Code for your environment
+Infrastructure as Code for your environment: **vcluster version**
+
+This repository is a template to help you start with the creation of an **Hoverkraft environment based on vcluster**.
 
 ## prerequisites
 
 This repo uses the following dependencies :
 
-- direnv for load env vars in `.envrc` files
-- asdf for managing binary versions  of the needed tools
-- aws-vault (optional) to manage all aws accounts securely
-- pyenv for managing python version and virtualenv
+- **mise-en-place** for heving a good development experience
+- **pyenv** for managing python version and virtualenv (used mainly by pre-commit hooks)
 
 You can find more details about each tool on their official websites :
 
-- [direnv](https://direnv.net/)
-- [asdf](https://asdf-vm.com)
-- [aws-vault](https://github.com/99designs/aws-vault)
+- [mise-en-place](https://mise.jdx.dev)
 - [pyenv](https://github.com/pyenv/pyenv)
 
-### asdf-vm
+### mise-en-place
 
-- install asdf
+- Please refer to the [mise-en-place](https://mise.jdx.dev) website for installation instructions
 - run these commands :
 
 ```sh
-asdf plugin add checkov
-asdf plugin add infracost
-asdf plugin add terraform
-asdf plugin add terraform-docs
-asdf plugin add terragrunt
-asdf plugin add tflint
-asdf plugin add tfsec
-asdf plugin add tfupdate
-asdf install
+mise trust
+mise install
 ```
 
 ### pyenv
 
-- install pyenv
+- Please refer to the [pyenv](https://github.com/pyenv/pyenv) website for installation instructions
 - run these commands :
 
 ```shell
@@ -57,17 +48,10 @@ pyenv virtualenv 3.13.0 hk-ovh
 ```shell
 cd envs/xxxxxxxxx
 cd <part you want to apply> # if you want to deploy full env just skip this step
-aws-vault exec <acme-env-aws-account> -- terragrunt run-all apply
+terragrunt apply --all
 ```
-
-NOTE: you can add the following arguments in order to fully automate the deployment
-
-- `--terragrunt-non-interactive`
-- `--terragrunt-ignore-external-dependencies`
 
 ## depploy apps to an env
 
 - take the outputs you need from the step above
 - see [argo-app-of-apps](../argo-app-of-apps) repository
-
-## limitations

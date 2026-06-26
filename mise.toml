@@ -8,6 +8,7 @@ lockfile = true
 # fnox = "1.19.0"
 checkov = "3.3.2"
 infracost = "0.10.42"
+prek = "0.4.5"
 terraform = "1.13.1"
 terraform-docs = "0.16.0"
 terraform-ls = "0.38.2"

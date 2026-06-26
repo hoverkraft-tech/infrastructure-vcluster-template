@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#MISE description="Setup pre-commit hooks"
+#MISE dir="{{cwd}}"
+
+set -e -o pipefail
+
+prek install

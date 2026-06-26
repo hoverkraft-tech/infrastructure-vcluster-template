@@ -10,6 +10,8 @@ include "root" {
 }
 
 terraform {
+  source = "github.com/hoverkraft-tech/terraform-modules.git//misc/null?ref=2.5.1"
+
   # Wait for the kubeconfig file to be available before creating the namespace
   before_hook "wait_for_kubeconfig" {
     commands = ["apply"]
@@ -37,4 +39,8 @@ dependency "vcluster" {
 
   mock_outputs_allowed_terraform_commands = ["init", "validate", "plan"]
   mock_outputs                            = {}
+}
+
+inputs = {
+  name = local.env.name
 }

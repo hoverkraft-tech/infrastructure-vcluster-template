@@ -13,7 +13,7 @@ terraform {
 
 dependency "helm" {
   config_path                             = "../k8s/controlplane"
-  mock_outputs_allowed_terraform_commands = ["init", "validate", "plan"]
+  mock_outputs_allowed_terraform_commands = ["init", "validate", "plan", "providers"]
   mock_outputs = {
     manifest = "xxxxxxxxxxxxxxxxxxxx"
   }

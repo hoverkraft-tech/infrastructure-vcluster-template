@@ -37,7 +37,7 @@ dependency "vcluster" {
   config_path  = "../../output"
   skip_outputs = true
 
-  mock_outputs_allowed_terraform_commands = ["init", "validate", "plan"]
+  mock_outputs_allowed_terraform_commands = ["init", "validate", "plan", "providers"]
   mock_outputs                            = {}
 }
 

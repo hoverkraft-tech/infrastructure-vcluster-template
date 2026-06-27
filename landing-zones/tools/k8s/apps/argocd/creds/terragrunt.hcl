@@ -16,13 +16,13 @@ dependency "argocd" {
   config_path  = "../core"
   skip_outputs = true
 
-  mock_outputs_allowed_terraform_commands = ["init", "validate", "plan"]
+  mock_outputs_allowed_terraform_commands = ["init", "validate", "plan", "providers"]
   mock_outputs                            = {}
 }
 
 dependency "argocd_private_key" {
   config_path                             = "../../../../secrets/argocd-private-key"
-  mock_outputs_allowed_terraform_commands = ["init", "validate", "plan"]
+  mock_outputs_allowed_terraform_commands = ["init", "validate", "plan", "providers"]
   mock_outputs = {
     # checkov:skip=CKV_SECRET_13: this is only a mock
     password = "-----BEGIN OPENSSH PRIVATE KEY-----\nxxxxxxxxxxxxxxxxxxxx\n-----END OPENSSH PRIVATE KEY-----"

@@ -1,0 +1,6 @@
+[tools]
+kubectl = "1.35"
+
+[env]
+KUBECONFIG = "{{ env.ROOT_DIR }}/.secrets/prod.kubeconfig"
+KUBE_CONFIG_PATH = "{{ env.ROOT_DIR }}/.secrets/prod.kubeconfig"

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#MISE description="Clean terragrunt cache folders"
+#MISE dir="{{cwd}}"
+
+set -eu -o pipefail
+
+echo "⚠️  THIS WILL REMOVE ALL TERRAGRUNT CACHE FOLDERS (.terragrunt-cache) ⚠️
+If there is no remote backend configured, this means **LOOSING ALL TERRAFORM STATES**.
+Please confirm that this is intended."
+
+read -p "Are you sure? (y/n) " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    find . -name '.terragrunt-cache' -type d -print0 | xargs -0 rm -rf
+fi

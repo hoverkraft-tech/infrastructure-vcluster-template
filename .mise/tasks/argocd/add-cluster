@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#MISE description="add a remote cluster to under argocd management"
+#MISE dir="{{cwd}}"
+#USAGE flag "--name <name>"
+#USAGE flag "--context <context>"
+
+set -eu -o pipefail
+
+CLUSTERNAME="${usage_name?}"
+KUBE_CONTEXT="${usage_context?}"
+
+echo "[INFO] your kubeconfig is ${KUBECONFIG:-$HOME/.kube/config}" >&2
+echo "[INFO] your context is $(kubectl config current-context || echo "null")" >&2
+
+argocd cluster add --name "${CLUSTERNAME}" "${KUBE_CONTEXT}"
